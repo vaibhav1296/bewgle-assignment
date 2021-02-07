@@ -37,9 +37,12 @@ router.post("/post-data", middleware.extractInfoFromReq, async (req, res) => {
         message: "SOMETHING WENT WRONG WHILE INSERTION",
       });
     } else {
+      res.locals.reqData.body = JSON.parse(res.locals.reqData.body);
+      res.locals.reqData.query = JSON.parse(res.locals.reqData.query);
+      res.locals.reqData.headers = JSON.parse(res.locals.reqData.headers);
       setTimeout(() => {
         res.status(200).send({
-          message: "Data is successfully inserted.",
+          message: "Data is successfully posted",
           body: res.locals.reqData,
         });
       }, res.locals.reqData.duration * 1000);
@@ -62,7 +65,7 @@ router.put("/update-data", middleware.extractInfoFromReq, async (req, res) => {
     } else {
       setTimeout(() => {
         res.status(200).send({
-          message: "Data is successfully inserted.",
+          message: "Data is successfully updated.",
           body: res.locals.reqData,
         });
       }, res.locals.reqData.duration * 1000);
@@ -75,7 +78,7 @@ router.put("/update-data", middleware.extractInfoFromReq, async (req, res) => {
   }
 });
 router.delete(
-  "/update-data",
+  "/delete-data",
   middleware.extractInfoFromReq,
   async (req, res) => {
     try {
@@ -88,7 +91,7 @@ router.delete(
       } else {
         setTimeout(() => {
           res.status(200).send({
-            message: "Data is successfully inserted.",
+            message: "Data is successfully deleted.",
             body: res.locals.reqData,
           });
         }, res.locals.reqData.duration * 1000);
