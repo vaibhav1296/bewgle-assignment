@@ -6,21 +6,25 @@ const utility = require("../services/utilityService");
 router.get("/", async (req, res) => {
   try {
     let methods = ["GET", "POST", "DELETE", "UPDATE"];
+    // check if fromDate and toDate both are there in request body
     if (
       !utility.isNullOrUndefined(req.body.fromDate) &&
       !utility.isNullOrUndefined(req.body.toDate)
     ) {
+      // if yes then
       const fromDate = req.body.fromDate;
       const toDate = req.body.toDate;
       let result = [];
-
+      // iterate over all methods
       for (let j = 0; j < methods.length; j++) {
         let avgDuration = 0;
+        // get requests between from date and to date
         let reply = await query.getRequstByFromAndToDate(
           methods[j],
           fromDate,
           toDate
         );
+        //check if count of request is not zero then make average
         if (reply.count !== 0) {
           let sum = 0;
           for (let i = 0; i < reply.rows.length; i++) {
@@ -34,7 +38,7 @@ router.get("/", async (req, res) => {
           avgDuration: avgDuration,
         });
       }
-
+      //push every result in result array
       res.status(200).send({
         message: "Total requests with average time",
         body: result,
