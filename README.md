@@ -100,6 +100,7 @@ and you will recieve response like this
 - Run command **_npm i_**.
 - Create a database.
 - Edit the config.json file inside config folder with mentioned details ( edit database name, port, username, password ).
+- Run command **_npx sequelize-cli db:migrate_**
 - Create a .env file and add a variable named **_SERVER_PORT_** and put a value like 3000 or 8080 or any.
 - Run command **_npm start_**
 - Test APIs on postman
