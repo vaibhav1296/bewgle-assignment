@@ -24,16 +24,6 @@ const insertRequestData = async ({
   }
 };
 
-const findAndCountReq = async (method) => {
-  try {
-    return models.request.findAndCountAll({
-      where: { method },
-    });
-  } catch (err) {
-    console.log(err);
-  }
-};
-
 const getRequestByFromDate = async (method, fromDate) => {
   return models.request.findAndCountAll({
     where: {
@@ -91,7 +81,6 @@ const getRequstByFromAndToDate = async (method, fromDate, toDate) => {
 
 module.exports = {
   insertRequestData,
-  findAndCountReq,
   getSumOfDuration,
   getRequstByFromAndToDate,
   getRequestByFromDate,
