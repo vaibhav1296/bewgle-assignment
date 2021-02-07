@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "<DB-USERNAME>",
+    "password": "<DB-PASSWORD>",
+    "database": "<DB-NAME>",
+    "host": "<DB-HOST>",
+    "dialect": "<DB-DIALECT>",
+    "operatorsAliases": "<OPERATOR-ALIAS-LIKE-'0'>"
+  },
+  "test": {
+    "username": "<DB-USERNAME>",
+    "password": "<DB-PASSWORD>",
+    "database": "<DB-NAME>",
+    "host": "<DB-HOST>",
+    "dialect": "<DB-DIALECT>",
+    "operatorsAliases": "<OPERATOR-ALIAS-LIKE-'0'>"
+  },
+  "production": {
+    "username": "<DB-USERNAME>",
+    "password": "<DB-PASSWORD>",
+    "database": "<DB-NAME>",
+    "host": "<DB-HOST>",
+    "dialect": "<DB-DIALECT>",
+    "operatorsAliases": "<OPERATOR-ALIAS-LIKE-'0'>"
+  }
+}
