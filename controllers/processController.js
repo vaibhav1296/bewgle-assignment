@@ -5,15 +5,21 @@ const { responseTimeConfig } = require("../config/customConfig");
 const middleware = require("../services/middlewares");
 const query = require("../services/query/query");
 
+// Each API goes through middleware which extracts and checks request information and saves details to res.locals
+
 router.get("/get-data", middleware.extractInfoFromReq, async (req, res) => {
   try {
     res.locals.reqData.method = "GET";
+    //insert data in database with this statement
     const reply = await query.insertRequestData({ ...res.locals.reqData });
+    //check for database response
     if (utility.isNullOrUndefined(reply)) {
+      //if null or undefined then through error
       res.status(400).send({
         message: "SOMETHING WENT WRONG WHILE INSERTION",
       });
     } else {
+      // call setTimeout to send response after a duration of time
       setTimeout(() => {
         res.status(200).send({
           message: "Data is successfully inserted.",
